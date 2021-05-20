@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
+import {Button as MuiButton} from '@material-ui/core'
+
 
 interface ButtonProps {
-    children:string
-    text:string
+    children?:string
+    text?:string
+    increment?:number
 }
 
-function Button({children, text}:ButtonProps){
+function Button({children, text, increment=1}:ButtonProps){
     const [state, setState] = useState(0)
    // const buttonName = "Yey";
 
@@ -16,7 +19,7 @@ function Button({children, text}:ButtonProps){
     return(
         <>
         {/*<button onClick={handleClick}>{children}</button>*/}
-        <button onClick={() => setState(state+1)} style={{width:500,height:500,fontSize:30}}>{state}</button>
+        <MuiButton onClick={() => setState(state+increment)} style={{width:100,height:100,fontSize:30}}>{state}</MuiButton>
 
         </>
     );
