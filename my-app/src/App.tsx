@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import axios from 'axios'
 import {Button as MuiButton, TextField} from '@material-ui/core'
 import Button from './components/Button';
+import Menu from './components/Menu';
 
 function App() {
   //javascript
@@ -29,7 +30,7 @@ const setup = async () => {
 },[state])
 
 
-const handleClick = async () => {
+const handleClickUser = async () => {
   const {data} = await axios.get(API.username(username))
 
   setDisplayedUsername(data)
@@ -45,9 +46,14 @@ const handleClick = async () => {
         return <Button increment={x}>hey</Button>
       })}</div>
       <div><TextField value={username} onChange={(e) => {setUsername(e.target.value)}} variant="outlined"/>
-      <MuiButton onClick={() => {handleClick()}}>Display</MuiButton></div>
+      <MuiButton onClick={() => {handleClickUser()}}>Display</MuiButton></div>
       <div>{displayedUsername}</div>
+
+      <Menu text="Cette page n'existe pas encore !"/>
+            
     </div>
+
+    
   );
 }
 
